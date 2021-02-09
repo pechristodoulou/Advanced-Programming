@@ -27,9 +27,16 @@ Note also that instead of a command line tool, other (graphical) tools or *Integ
 
 # Specifics #
 
-* The `spectral-norm` code uses the OpenMP library to enable *multi-threading*, a topic that we will get to later. To compile this code, the `-fopenmp` compilation flag is needed.
+* The `nbody` program takes an integer step that represents the number of steps taken in the simulation of this system. Set this to a large number (e.g. 100000) to see any difference.
+* The `spectral-norm` code uses the OpenMP library to enable *multi-threading*, a topic that we will get to later. To compile this code, the `-fopenmp` compilation flag is needed (a more specific set of compilation options is specified in the C++ source file, but is useful primarily to produce more optimised code). The program takes a single integer argument representing an approximation towards calculating the so-called spectral norm of a matrix (see e.g. [Wikipedia](https://en.wikipedia.org/wiki/Matrix_norm)); set this to e.g. 1000 to see a noticeable difference.
 * The `mandelbrot` code produces a NetPBM graphics output file, but does so by writing it to its standard output. One way to redirect the output is to specify
 
         time ( ./myexe args > mandelbrot.pbm )
 
 (The parentheses here are needed to create a sub-shell; without them, the outputs from the `time` command and from `myexe` would get mixed up.)
+You will also find that compiling this C++ code needs yet different options. They are specified in the source code, but are reproduced here (as tested with g++ version 9):
+
+	g++ -Wall -O3 -ffp-contract=off -fno-expensive-optimizations -march=native -fopenmp -std=c++14 mandelbrot.cc -o mandelbrot.exe
+
+Here, in view of the later discussion on parallellizing the execution of code, the `-march=native` option is somewhat particularly relevant: it instructs the compiler to exploit the available CPU architecture as much as possible. This is used here to carry out *single-instruction, multiple data* (SIMD) instructions that allow for code speed-up in a different way than by using multi-threading.
+The program again takes a single integer argument, which determines the number of pixels (and hence the granularity) in the resulting plot of the Mandelbrot set.
