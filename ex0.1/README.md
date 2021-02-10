@@ -40,3 +40,5 @@ You will also find that compiling this C++ code needs yet different options. The
 
 Here, in view of the later discussion on parallellizing the execution of code, the `-march=native` option is somewhat particularly relevant: it instructs the compiler to exploit the available CPU architecture as much as possible. This is used here to carry out *single-instruction, multiple data* (SIMD) instructions that allow for code speed-up in a different way than by using multi-threading.
 The program again takes a single integer argument, which determines the number of pixels (and hence the granularity) in the resulting plot of the Mandelbrot set.
+
+It is conceivable that your CPU architecture may be such that none of the different SIMD options may work for you. It would be appreciated if you at least try, however, and document your observations (compilation errors) if that is the case.
