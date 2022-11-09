@@ -32,7 +32,7 @@ Note also that instead of a command line tool, other (graphical) tools or *Integ
 # Specifics #
 
 * The `nbody` program takes an integer step that represents the number of steps taken in the simulation of this system. Set this to a large number (e.g. 100000) to see any difference.
-* The `spectral-norm` code uses the OpenMP library to enable *multi-threading*, a topic that we will get to later. To compile this code, the `-fopenmp` compilation flag is needed (a more specific set of compilation options is specified in the C++ source file, but is useful primarily to produce more optimised code). The program takes a single integer argument representing an approximation towards calculating the so-called spectral norm of a matrix (see e.g. [Wikipedia](https://en.wikipedia.org/wiki/Matrix_norm)); set this to e.g. 1000 to see a noticeable difference.
+* The `spectral-norm` code uses the OpenMP library (note, availability on other systems than Linux is not guaranteed) to enable *multi-threading*, a topic that we will get to later. To compile this code, the `-fopenmp` compilation flag is needed (a more specific set of compilation options is specified in the C++ source file, but is useful primarily to produce more optimised code). The program takes a single integer argument representing an approximation towards calculating the so-called spectral norm of a matrix (see e.g. [Wikipedia](https://en.wikipedia.org/wiki/Matrix_norm)); set this to e.g. 1000 to see a noticeable difference.
 * The `mandelbrot` code produces a NetPBM graphics output file, but does so by writing it to its standard output. One way to redirect the output is to specify
 
         time ( ./myexe args > mandelbrot.pbm )
