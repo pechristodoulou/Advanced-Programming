@@ -7,11 +7,15 @@ The benchmarks have been coded in such a way as to be algorithmically identical 
 
 # Performance measurement #
 
-The task here is to carry out a performance measurement using the `time` program, running both the C++ and the Python version of each code. A general way to determine the time needed for a program to run is the following:
+The task here is to carry out a performance measurement using the `time` program, running both the C++ and the Python version of each code. A general way to determine the time needed for an *executable* program (see below) to run is the following:
 
     time ./myexe args
 
-where `args` are any run-time arguments to the program. (The `./` prefix is not needed if you have the "current working directory" `.` in your `PATH`; however, doing so is generally considered bad practice, as it is insecure.) Note that all three programs take arguments that will affect the computing time needed. In the Python case you would replace `myexe` with `python3 mypython.py` (note that Python2 will likely fail to work).
+where `args` are any run-time arguments to the program. (The `./` prefix is not needed if you have the "current working directory" `.` in your `PATH` environment variable; however, doing so is generally considered bad practice, as it is insecure.) Note that all three programs take arguments that will affect the computing time needed. 
+
+In the Python case you would replace `myexe` with `python3 mypython.py` (note that Python2 will likely fail to work):
+
+    time python3 mypython.py args
 
 # How to run: C++ #
 
