@@ -13,7 +13,7 @@ The task here is to carry out a performance measurement using the `time` program
 
 where `args` are any run-time arguments to the program `myexe`, which is assumed to reside in your current working directory. (The `./` prefix is not needed if you have the current working directory `.` in your `PATH` environment variable; however, doing so is generally considered bad practice, as it is insecure.) Note that all three programs take arguments that will affect the computing time needed. 
 
-In the Python case you would replace `myexe` with `python3 mypython.py` (note that Python2 will likely fail to work):
+In the Python case you would replace `myexe` with `python3 mypython.py` (note that Python2 will likely fail to work; but at this point, `python` points to `python3` so this will suffice):
 
     time python3 mypython.py args
 
