@@ -7,11 +7,11 @@ The benchmarks have been coded in such a way as to be algorithmically identical 
 
 # Performance measurement #
 
-The task here is to carry out a performance measurement using the `time` program, running both the C++ and the Python version of each code. A general way to determine the time needed for an *executable* program (see below) to run is the following:
+The task here is to carry out a performance measurement using the `time` program, running both the C++ and the Python version of each code (which you will find in the subdirectories `nbody`, `mandelbrot`, and `spectral-norm`). A general way to determine the time needed for an *executable* program (see below) to run is the following:
 
     time ./myexe args
 
-where `args` are any run-time arguments to the program. (The `./` prefix is not needed if you have the "current working directory" `.` in your `PATH` environment variable; however, doing so is generally considered bad practice, as it is insecure.) Note that all three programs take arguments that will affect the computing time needed. 
+where `args` are any run-time arguments to the program `myexe`, which is assumed to reside in your current working directory. (The `./` prefix is not needed if you have the current working directory `.` in your `PATH` environment variable; however, doing so is generally considered bad practice, as it is insecure.) Note that all three programs take arguments that will affect the computing time needed. 
 
 In the Python case you would replace `myexe` with `python3 mypython.py` (note that Python2 will likely fail to work):
 
@@ -23,7 +23,7 @@ The general way to use (on Linux machines) the command-line g++ compiler illustr
 
     g++ mysource.cc -o myexe
 
-Note that the C++ language standard is (still) evolving, and different programs adhere to different standards. The programs used here conform to the c++11 standard (which appears to be the default setting for the g++ version 7 compiler). Other standards could be specified using the `-std=...` option to g++. Many options to g++ exist; extensive information can be obtained by doing
+Note that the C++ language standard is (still) evolving, and different programs adhere to different standards. The programs used here conform to the c++11 standard (which appears to be the default setting for the g++ version 7 compiler). Other standards could be specified using the `-std=...` option to g++ (where the default for the current g++ version 11.4 defaults to `-std=gnu++17`, which adds some specific features to the C++17 language standard). Many options to g++ exist; extensive information can be obtained by doing
 
     man g++
 
