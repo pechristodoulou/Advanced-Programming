@@ -1,7 +1,7 @@
 import time
 import numpy as np
 
-N = 10^9  # 100 000 000
+N = 10^9  # 1 000 000 000
 
 # a) Generate random number in one shot
 start = time.time()
