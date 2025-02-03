@@ -1,0 +1,9 @@
+Ex0.2
+a) Single batch generation: 1.669e-05 sec
+b) Chunked generation: 8.168e-04 sec
+
+Overall runtime of file:
+real    0m0.131s
+user    0m0.088s
+sys     0m0.035s
+

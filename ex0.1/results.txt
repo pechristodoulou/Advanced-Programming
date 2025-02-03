@@ -20,6 +20,7 @@ C++
 real    0m0.031s
 user    0m0.704s
 sys     0m0.075s
+
 Mandelbrot for 20000 pixels
 Py
 real    0m24.789s
