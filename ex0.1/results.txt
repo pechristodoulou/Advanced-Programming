@@ -1,0 +1,29 @@
+Nbody for 100000 steps
+-0.169075164
+-0.169079859
+Py 
+real    0m0.755s
+user    0m0.739s
+sys     0m0.015s
+C++ 
+real    0m0.109s
+user    0m0.094s
+sys     0m0.011s
+
+Spectral-norm approx. for 1000
+1.274224148
+Py
+real    0m11.991s
+user    0m11.956s
+sys     0m0.018s
+C++
+real    0m0.031s
+user    0m0.704s
+sys     0m0.075s
+Mandelbrot for 20000 pixels
+Py
+
+C++
+real    0m0.579s
+user    0m4.894s
+sys     0m0.142s
