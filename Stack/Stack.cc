@@ -1,57 +1,46 @@
 #include <iostream>
-using namespace std ;
+#include "Stack.h"
+using namespace std;
 
-const int LEN = 80 ; // default stack length
+Stack::Stack() {
+    count = 0;
+}
 
-struct Stack {
-  // Implementation
-  double s[LEN] ;
-  int count ;
+Stack::~Stack() {
+    // No dynamic memory used in 3.1, so nothing to free
+}
 
-  // Interface
-  void init() { count = 0 ; }
-  int nitems() { return count ; }
-  bool full() { return (count==LEN) ; }
-  bool empty() { return (count==0) ; }
+int Stack::nitems() const {
+    return count;
+}
 
-  void push(double c) { 
+bool Stack::full() const {
+    return (count == LEN);
+}
+
+bool Stack::empty() const {
+    return (count == 0);
+}
+
+void Stack::push(double c) {
     if (full()) {
-      cout << "Stack::push() Error: stack is full" << endl ;
-      return ;
+        cout << "Stack::push() Error: stack is full" << endl;
+        return;
     }
-    s[count++] = c ;
-  }
-  
-  double pop() { 
+    s[count++] = c;
+}
+
+double Stack::pop() {
     if (empty()) {
-      cout << "Stack::pop() Error: stack is empty" << endl ;
-      return 0 ;
-    }    
-    return s[--count] ;
-  }
-} ;
+        cout << "Stack::pop() Error: stack is empty" << endl;
+        return 0;
+    }
+    return s[--count];
+}
 
-
-int main() {
-  
-  Stack s ;
-  s.init() ; // initialize Stack
-  
-  // Write doubles into Stack
-  int i ;
-  for (i=0 ; i<10 ; i++) {
-    cout << "pushing value " << i*i << " in stack" << endl ;
-    s.push(i*i) ;
-  }
-  
-  // Count doubles in fifo
-  cout << s.nitems() << " value in stack" << endl ;
-  
-  // Read doubles back from fifo
-  while (!s.empty()) {
-    double val = s.pop() ;
-    cout << "popping value " << val << " from stack" << endl ;
-  }
-
-  return 0 ;
+void Stack::inspect() const {
+    cout << "Stack contents (top to bottom):" << endl;
+    for (int i = count - 1; i >= 0; --i) {
+        cout << " [" << i << "]: " << s[i] << endl;
+    }
 }
