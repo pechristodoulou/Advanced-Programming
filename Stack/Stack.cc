@@ -2,10 +2,21 @@
 #include "Stack.h"
 using namespace std;
 
-Stack::Stack(int initialSize) {
-    size = initialSize;
+void Stack::init(int sz) {
+    size = sz;
     s = new double[size];
     count = 0;
+}
+
+Stack::Stack(int initialSize) {
+    init(initialSize);
+}
+
+Stack::Stack(const Stack& other) {
+    init(other.size);
+    count = other.count;
+    for (int i = 0; i < count; ++i)
+        s[i] = other.s[i];
 }
 
 Stack::~Stack() {
@@ -26,7 +37,7 @@ bool Stack::empty() const {
 
 void Stack::push(double c) {
     if (full()) {
-        grow(10); // Grow by 10 when full
+        grow(10);
     }
     s[count++] = c;
 }
@@ -41,18 +52,15 @@ double Stack::pop() {
 
 void Stack::inspect() const {
     cout << "Stack contents (top to bottom):" << endl;
-    for (int i = count - 1; i >= 0; --i) {
+    for (int i = count - 1; i >= 0; --i)
         cout << " [" << i << "]: " << s[i] << endl;
-    }
 }
 
 void Stack::grow(int delta) {
     int newSize = size + delta;
     double* newBuf = new double[newSize];
-
     for (int i = 0; i < count; ++i)
         newBuf[i] = s[i];
-
     delete[] s;
     s = newBuf;
     size = newSize;

@@ -3,7 +3,8 @@
 
 class Stack {
 public:
-    Stack(int initialSize = 10);  // Allow optional initial size
+    Stack(int initialSize = 10);
+    Stack(const Stack& other);   // Copy constructor
     ~Stack();
 
     void push(double c);
@@ -14,11 +15,12 @@ public:
     void inspect() const;
 
 private:
-    void grow(int delta);         // Expands buffer by delta
+    void grow(int delta);
+    void init(int size);         // Shared init logic
 
-    double* s;                    // Dynamic array
-    int count;                    // Number of items
-    int size;                     // Current allocated size
+    double* s;
+    int count;
+    int size;
 };
 
 #endif
