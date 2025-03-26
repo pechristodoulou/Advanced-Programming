@@ -4,25 +4,22 @@ using namespace std;
 
 /*
 Why are we doing this?
-→ To transition from a C-style struct to a proper class with encapsulation and clean modular design.
-We also observe what happens when we exceed the internal stack buffer.
+→ We're removing the fixed buffer limit by allowing the Stack to grow automatically.
+This avoids errors when pushing more items than the initial size.
 */
 
 int main() {
-    Stack s;
+    Stack s(5); // Start small on purpose to test growing
 
-    // Push 100 elements — buffer will overflow after 80
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < 20; ++i) {
         cout << "Pushing " << i*i << " into stack" << endl;
         s.push(i*i);
     }
 
     cout << "Number of items in stack: " << s.nitems() << endl;
 
-    // Inspect current contents
     s.inspect();
 
-    // Pop all elements
     while (!s.empty()) {
         double val = s.pop();
         cout << "Popped value: " << val << endl;

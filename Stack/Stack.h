@@ -3,8 +3,8 @@
 
 class Stack {
 public:
-    Stack();                // Constructor
-    ~Stack();               // Destructor
+    Stack(int initialSize = 10);  // Allow optional initial size
+    ~Stack();
 
     void push(double c);
     double pop();
@@ -14,9 +14,11 @@ public:
     void inspect() const;
 
 private:
-    static const int LEN = 80;
-    double s[LEN];
-    int count;
+    void grow(int delta);         // Expands buffer by delta
+
+    double* s;                    // Dynamic array
+    int count;                    // Number of items
+    int size;                     // Current allocated size
 };
 
 #endif
