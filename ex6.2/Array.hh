@@ -1,68 +1,69 @@
 #ifndef ARRAY_HH
 #define ARRAY_HH
 
+#include <iostream>
+using namespace std;
+
+template <class T>
 class Array {
 public:
-
-  Array(int size) : _size(size) {
-    _arr = new double[_size] ;
+  // g) Constructor with default value
+  Array(int size, T defVal = T()) : _size(size), _default(defVal) {
+    _arr = new T[_size];
+    for (int i = 0; i < _size; ++i)
+      _arr[i] = _default;
   }
 
-
-  Array(const Array& other) : _size(other._size) {
-    _arr = new double[other._size] ;
-
-    // Copy elements
-    for (int i=0 ; i<_size ; i++) {
-      _arr[i] = other._arr[i] ;
-    }
+  // Copy constructor
+  Array(const Array& other) : _size(other._size), _default(other._default) {
+    _arr = new T[_size];
+    for (int i = 0; i < _size; ++i)
+      _arr[i] = other._arr[i];
   }
 
+  // Destructor
   ~Array() {
-    delete[] _arr ;
+    delete[] _arr;
   }
 
-
-  Array& operator=(const Array& other) 
-  {
-    if (&other==this) return *this ;
-    if (_size != other._size) {
-      resize(other._size) ;
-    }
-    for (int i=0 ; i<_size ; i++) {
-      _arr[i] = other._arr[i] ;
-    }
-    return *this ;
+  // Assignment operator
+  Array& operator=(const Array& other) {
+    if (this == &other) return *this;
+    if (_size != other._size)
+      resize(other._size);
+    _default = other._default;
+    for (int i = 0; i < _size; ++i)
+      _arr[i] = other._arr[i];
+    return *this;
   }
 
-  double& operator[](int index) {
-    return _arr[index] ;
-  }
-  const double& operator[](int index) const {
-    return _arr[index] ;
+  // e) operator[] with auto-resize
+  T& operator[](int index) {
+    if (index >= _size)
+      resize(index + 1);
+    return _arr[index];
   }
 
-  int size() const { return _size ; }
+  const T& operator[](int index) const {
+    return _arr[index];  // const version won't auto-resize
+  }
 
+  int size() const { return _size; }
+
+  // Resize with default value fill
   void resize(int newSize) {
-    // Allocate new array
-    double* newArr = new double[newSize] ;
-
-    // Copy elements
-    for (int i=0 ; i<_size ; i++) {
-      newArr[i] = _arr[i] ;
-    }
-
-    // Delete old array and install new one
-    delete[] _arr ;
-    _size = newSize ;
-    _arr = newArr ;
+    T* newArr = new T[newSize];
+    for (int i = 0; i < newSize; ++i)
+      newArr[i] = (i < _size) ? _arr[i] : _default;
+    delete[] _arr;
+    _arr = newArr;
+    _size = newSize;
   }
-
 
 private:
-  int _size ;
-  double* _arr ;
-} ;
+  int _size;
+  T* _arr;
+  T _default;
+};
 
 #endif
