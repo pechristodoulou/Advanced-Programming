@@ -1,11 +1,10 @@
 #include <iostream>
 #include <list>
 #include <vector>
-#include <chrono>
 using namespace std;
-using namespace std::chrono;
 
-// #define USE_LIST // comment this line to use vector
+// Switch between list and vector
+#define USE_LIST
 
 #ifdef USE_LIST
 #define Container list<int>
@@ -15,12 +14,10 @@ using namespace std::chrono;
 
 int main() {
     const int N = 100000;
-
     Container data;
+
     for (int i = 0; i < N; ++i)
         data.push_back(i);
-
-    auto start = high_resolution_clock::now();
 
     typename Container::iterator it = data.begin();
     int count = 0;
@@ -28,10 +25,14 @@ int main() {
     while (it != data.end()) {
         ++count;
         if (count == 3) {
-            it = data.erase(it);
+            it = data.erase(it); // returns new iterator
             count = 0;
         } else {
             ++it;
         }
     }
+
+    cout << "Done erasing every 3rd element." << endl;
+
+    return 0;
 }
