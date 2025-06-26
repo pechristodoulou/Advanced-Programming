@@ -43,8 +43,9 @@ int main() {
     // h) Print headers
     cout << "\n" << setw(20) << "ValueA" << setw(20) << "ValueB" << setw(20) << "ValueC" << endl;
 
-    // i) Print dashed separator
-    cout << setfill('-') << setw(60) << "-" << setfill(' ') << endl;
+    // i) Print dashed separator with correct single dash
+    cout << setfill('-') << setw(60) << "" << endl;
+    cout << setfill(' '); // Reset to default fill
 
     // Reprint numbers under the header
     cout << fixed << setprecision(3) << left;
