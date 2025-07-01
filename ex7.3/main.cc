@@ -6,6 +6,10 @@ using namespace std;
 // Switch between list and vector
 
 /* list: 0.01 user 0.00 system 0:00.02 elapsed
+vector: 0.11 user 0.00 system 0:00.12 elapsed
+
+Erasing from a std::list is O(1) since it only adjusts pointers,
+while erasing from a std::vector is O(n) because it shifts all subsequent elements.
 */
 // #define USE_LIST
 
