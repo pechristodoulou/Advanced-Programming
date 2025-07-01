@@ -8,6 +8,17 @@ using namespace std;
 Why are we doing this?
 → To learn how to use STL maps for counting.
 → We associate each word with its frequency using map<string, int>.
+
+b) Explain what does 'myMap[word] += 1' do?
+
+- 'myMap' is a 'std::map<std::string, int>', so it associates a word (key) with a count (value).
+- When we access 'myMap[word]', the map automatically inserts the key if it doesn't exist yet and sets its value to 0.
+- Then '+= 1' increments the count.
+
+So:
+- The first time we see a word, 'myMap[word]' creates an entry with value 0, then adds 1 → count becomes 1.
+- Every subsequent time, it retrieves the existing count and increments it.
+
 */
 
 int main() {
