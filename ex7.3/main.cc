@@ -4,7 +4,10 @@
 using namespace std;
 
 // Switch between list and vector
-#define USE_LIST
+
+/* list: 0.01 user 0.00 system 0:00.02 elapsed
+*/
+// #define USE_LIST
 
 #ifdef USE_LIST
 #define Container list<int>
