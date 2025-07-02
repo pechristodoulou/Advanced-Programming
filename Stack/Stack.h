@@ -3,8 +3,8 @@
 
 class Stack {
 public:
-    Stack();                // Constructor
-    ~Stack();               // Destructor
+    Stack(int initialSize = 10);
+    ~Stack();
 
     void push(double c);
     double pop();
@@ -14,9 +14,12 @@ public:
     void inspect() const;
 
 private:
-    static const int LEN = 80;
-    double s[LEN];
+    void grow(int delta);
+    void init(int size);
+
+    double* s;
     int count;
+    int size;
 };
 
 #endif

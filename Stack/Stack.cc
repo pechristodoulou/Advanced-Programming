@@ -2,12 +2,18 @@
 #include "Stack.h"
 using namespace std;
 
-Stack::Stack() {
+void Stack::init(int sz) {
+    size = sz;
+    s = new double[size];
     count = 0;
 }
 
+Stack::Stack(int initialSize) {
+    init(initialSize);
+}
+
 Stack::~Stack() {
-    // No dynamic memory used in 3.1, so nothing to free
+    delete[] s;
 }
 
 int Stack::nitems() const {
@@ -15,7 +21,7 @@ int Stack::nitems() const {
 }
 
 bool Stack::full() const {
-    return (count == LEN);
+    return (count == size);
 }
 
 bool Stack::empty() const {
@@ -24,8 +30,7 @@ bool Stack::empty() const {
 
 void Stack::push(double c) {
     if (full()) {
-        cout << "Stack::push() Error: stack is full" << endl;
-        return;
+        grow(10); // expand capacity by 10
     }
     s[count++] = c;
 }
@@ -40,7 +45,16 @@ double Stack::pop() {
 
 void Stack::inspect() const {
     cout << "Stack contents (top to bottom):" << endl;
-    for (int i = count - 1; i >= 0; --i) {
+    for (int i = count - 1; i >= 0; --i)
         cout << " [" << i << "]: " << s[i] << endl;
-    }
+}
+
+void Stack::grow(int delta) {
+    int newSize = size + delta;
+    double* newBuf = new double[newSize];
+    for (int i = 0; i < count; ++i)
+        newBuf[i] = s[i];
+    delete[] s;
+    s = newBuf;
+    size = newSize;
 }
