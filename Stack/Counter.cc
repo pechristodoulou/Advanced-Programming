@@ -5,7 +5,17 @@ using namespace std;
 Why are we doing this?
 → To track how many Counter objects exist at any time, using static data.
 → This shows how static members behave across different instances.
+
+/*
+Why must the static member be defined outside the class?
+
+- Static members are shared across all instances of a class, not tied to any one object.
+- When we declare 'static int count;' inside the class, it only tells the compiler the variable exists.
+- But it does not allocate memory for it — that must be done with a separate definition outside the class:
+      int Counter::count = 0;
+- Without this definition, the linker will complain with an "undefined reference" error.
 */
+
 
 class Counter {
 public:
