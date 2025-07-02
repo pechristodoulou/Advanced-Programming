@@ -9,6 +9,19 @@ using namespace std;
 Why are we doing this?
 → To create a simple building block of the calorimeter — a cell that holds energy and an ID.
 → This lets us test object construction, access, and modification.
+
+Why did we not implement custom copy constructors or destructors? For the following reasons:
+
+- CaloCell and Point only contain primitive types (int, double), so the compiler-generated
+  copy constructor and destructor perform correct deep copies and cleanup automatically.
+
+- Calorimeter contains a CaloGrid and a Point.
+  As long as CaloGrid properly manages its dynamic memory and implements its own
+  copy constructor and destructor, Calorimeter itself doesn't need to redefine them.
+  The default versions will correctly call the copy constructors/destructors of the members.
+
+In short: no need for custom implementations when value semantics and proper delegation suffice.
+*/
 */
 
 int main() {
