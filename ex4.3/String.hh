@@ -30,13 +30,6 @@ public:
     return *this;
   }
 
-  // g) operator+
-  friend String operator+(const String& a, const String& b) {
-    String temp = a;
-    temp += b;
-    return temp;
-  }
-
   // k) operator const char*
   operator const char*() const {
     return _s;
@@ -53,5 +46,12 @@ private:
     strcpy(_s, str);
   }
 };
+
+// g) operator+ moved outside the class (no longer a friend)
+String operator+(const String& a, const String& b) {
+  String temp = a;
+  temp += b;
+  return temp;
+}
 
 #endif

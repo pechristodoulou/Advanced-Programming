@@ -7,6 +7,13 @@ using namespace std;
 Why are we doing this?
 → To make a custom String class behave like a real string,
    supporting assignment, concatenation, and implicit conversion to const char*.
+
+i) Can you add a string literal to a String using operator+(), as in:
+
+→ Yes, this works because String has a constructor that takes const char*,
+and it is not marked 'explicit'. This allows implicit conversion from const char*
+to String, so "Blah" is automatically turned into a temporary String object.
+That temporary is then passed to operator+= or operator+.
 */
 
 int main() {
