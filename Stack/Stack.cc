@@ -30,7 +30,8 @@ bool Stack::empty() const {
 
 void Stack::push(double c) {
     if (full()) {
-        grow(10); // expand capacity by 10
+        cout << "Stack is full. Cannot push." << endl;
+        return;
     }
     s[count++] = c;
 }
@@ -47,14 +48,4 @@ void Stack::inspect() const {
     cout << "Stack contents (top to bottom):" << endl;
     for (int i = count - 1; i >= 0; --i)
         cout << " [" << i << "]: " << s[i] << endl;
-}
-
-void Stack::grow(int delta) {
-    int newSize = size + delta;
-    double* newBuf = new double[newSize];
-    for (int i = 0; i < count; ++i)
-        newBuf[i] = s[i];
-    delete[] s;
-    s = newBuf;
-    size = newSize;
 }

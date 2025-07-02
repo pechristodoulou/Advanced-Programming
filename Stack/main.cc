@@ -4,16 +4,15 @@ using namespace std;
 
 /*
 Why are we doing this?
-→ We want the Stack to automatically grow when full.
-→ This makes the Stack more flexible and removes artificial limits.
+→ To structure Stack as a proper class.
+→ We're testing pushing, popping, and inspecting with a fixed buffer size.
 */
 
 int main() {
     Stack s;
 
-    // Push more than 10 elements to test auto-growing
-    for (int i = 0; i < 20; ++i)
-        s.push(i);
+    for (int i = 0; i < 10; ++i)
+        s.push(i * i);
 
     s.inspect();
 

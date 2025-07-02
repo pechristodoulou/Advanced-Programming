@@ -14,7 +14,6 @@ public:
     void inspect() const;
 
 private:
-    void grow(int delta);
     void init(int size);
 
     double* s;
