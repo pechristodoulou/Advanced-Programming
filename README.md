@@ -13,7 +13,6 @@ Replace `exercise.cc` with the relevant filename. Exercises with multiple source
 
 Any included executables were built in the original development environment and may not run on your system; compile from source instead.
 
------------------------------------
 ## Exercises and Description:
 
 - **Exercise 0:** Setup and computation speed comparison
